@@ -2,8 +2,7 @@ var express = require('express');
 var app = express();
 var expressHbs = require('express-handlebars');
 
-app.engine('hbs', expressHbs({extname:'hbs'}));
-app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
 
