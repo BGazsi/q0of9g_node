@@ -16,31 +16,28 @@
 </head>
 
 <body>
-    <table class="table table-resposive table-hover table-striped">
-        <thead>
-            <tr>
-                <th>Előadó</th>
-                <th>Cím</th>
-                <th>Hossz</th>
-                <th>Műfaj</th>
-                <th>Év</th>
-            </tr>
-        </thead>
+<table class="table table-resposive table-hover table-striped">
+    <thead>
+    <tr>
+        <th>Cím</th>
+        <th>Hossz</th>
+        <th>Műfaj</th>
+        <th>Év</th>
+    </tr>
+    </thead>
 
-        <tbody>
-        {{#each songs}}
-            <tr>
-                <td>{{this.performer}}</td>
-                <td>{{this.title}}</td>
-                <td>{{this.length}}</td>
-                <td>{{this.genre}}</td>
-                <td>{{this.year}}</td>
-                <td><a href="/performer" class="btn btn-default">&raquo;</a></td>
-            </tr>
-        {{/each}}
-        </tbody>
+    <tbody>
+    <% songs.forEach(function(song) { %>
+        <tr>
+            <td><%= song.title  %></td>
+            <td><%= song.length %></td>
+            <td><%= song.genre  %></td>
+            <td><%= song.year   %></td>
+        </tr>
+    <% }); %>
+    </tbody>
 
-    </table>
+</table>
 </body>
 
 </html>
