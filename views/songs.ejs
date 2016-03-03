@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div class="main-wrapper">
+
+    <h1>Előadók</h1>
+
+    <div class="header-container text-center">
+        <input id="main-search" class="form-control search-bar" placeholder="Írj be valamit a kereséshez!">
+        <a href="/" class="btn btn-default header-btn pull-left no-left-margin">&laquo; Vissza</a>
+        <a href="#" class="btn btn-default header-btn pull-right">Dal hozzáadása</a>
+        <a href="/" class="btn btn-default header-btn pull-right">Főoldal</a>
+    </div>
+
+    <div class="table-responsive performers-table">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>Cím</th>
+                <th>Hossz</th>
+                <th>Műfaj</th>
+                <th>Év</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% songs.forEach(function(song) { %>
+            <tr>
+                <td><%= song.title %></td>
+                <td><%= song.length %></td>
+                <td><%= song.genre %></td>
+                <td><%= song.year %></td>
+            </tr>
+            <% }); %>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+</body>
+
+</html>
