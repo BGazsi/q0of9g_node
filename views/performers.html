@@ -24,7 +24,7 @@
     <div class="header-container text-center">
         <input id="main-search" class="form-control search-bar" placeholder="Írj be valamit a kereséshez!">
         <a href="/" class="btn btn-default header-btn pull-left no-left-margin">&laquo; Vissza</a>
-        <a href="#" class="btn btn-default header-btn pull-right">Előadó hozzáadása</a>
+        <button type="button" data-toggle="modal" data-target="#addPerformerModal" class="btn btn-default header-btn pull-right">Előadó hozzáadása</button>
     </div>
 
     <div class="table-responsive performers-table">
@@ -39,18 +39,18 @@
 
             <tbody>
                 <tr>
-                    <td>Előadó 1</td>
-                    <td>2</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">Előadó 1</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">2</td>
                     <td><a href="/songs" class="btn btn-default btn-next">&raquo;</a></td>
                 </tr>
                 <tr>
-                    <td>Előadó 2</td>
-                    <td>12</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">Előadó 2</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">12</td>
                     <td><a href="/songs" class="btn btn-default btn-next">&raquo;</a></td>
                 </tr>
                 <tr>
-                    <td>Előadó 4</td>
-                    <td>3</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">Előadó 4</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">3</td>
                     <td><a href="/songs" class="btn btn-default btn-next">&raquo;</a></td>
                 </tr>
             </tbody>
@@ -58,6 +58,59 @@
         </table>
     </div>
 </div>
+
+<!-- Modalok, mindegyiknek kulon ejs fajl lesz -->
+<!-- eloado hozzaadasa modal-->
+<div class="modal fade" id="addPerformerModal" tabindex="-1" role="dialog" aria-labelledby="addPerformerModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="addPerformerModalLabel">Előadó hozzáadása</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row margin-left-right">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" placeholder="Új előadó neve">
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
+                        <button type="button" class="btn btn-success">Mentés</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- eloado szerkesztese modal-->
+<div class="modal fade" id="editPerformerModal" tabindex="-1" role="dialog" aria-labelledby="editPerformerModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editPerformerModalLabel">Előadó szerkesztése</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row margin-left-right">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Előadó 1">
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
+                        <button type="button" class="btn btn-danger">Törlés</button>
+                        <button type="button" class="btn btn-success">Mentés</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

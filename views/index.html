@@ -21,7 +21,7 @@
     <div class="header-container">
         <input id="main-search" class="form-control search-bar" placeholder="Írj be valamit a kereséshez!">
         <a href="/performers" class="btn btn-default header-btn pull-right">Előadók megtekintése</a>
-        <button class="btn btn-default header-btn pull-right">Dal hozzáadása</button>
+        <button type="button" data-toggle="modal" data-target="#addSongModal" class="btn btn-default header-btn pull-right">Dal hozzáadása</button>
     </div>
 
     <div class="table-responsive">
@@ -38,45 +38,143 @@
 
             <tbody>
                 <tr>
-                    <td>Előadó 1</td>
-                    <td>Cím 1</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">Előadó 1</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editSongModal">Cím 1</td>
                     <td>3:11</td>
                     <td>Műfaj 1</td>
                     <td>2011</td>
                 </tr>
                 <tr>
-                    <td>Előadó 3</td>
-                    <td>Cím 3</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">Előadó 3</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editSongModal">Cím 3</td>
                     <td>3:13</td>
                     <td>Műfaj 3</td>
                     <td>2013</td>
                 </tr>
                 <tr>
-                    <td>Előadó 4</td>
-                    <td>Cím 4</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">Előadó 4</td>
+                    <td class="clickable" data-toggle="modal" data-target="#editSongModal">Cím 4</td>
                     <td>3:14</td>
                     <td>Műfaj 4</td>
                     <td>2014</td>
-                </tr>
-                <tr>
-                    <td>Előadó 5</td>
-                    <td>Cím 5</td>
-                    <td>3:15</td>
-                    <td>Műfaj 5</td>
-                    <td>2015</td>
-                </tr>
-                <tr>
-                    <td>Előadó 6</td>
-                    <td>Cím 6</td>
-                    <td>3:16</td>
-                    <td>Műfaj 6</td>
-                    <td>2016</td>
                 </tr>
             </tbody>
 
         </table>
     </div>
 </div>
+
+<!-- Modalok, mindegyiknek kulon ejs fajl lesz -->
+<!-- eloado szerkesztese modal-->
+<div class="modal fade" id="editPerformerModal" tabindex="-1" role="dialog" aria-labelledby="editPerformerModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editPerformerModalLabel">Előadó szerkesztése</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row margin-left-right">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Előadó 1">
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
+                        <button type="button" class="btn btn-danger">Törlés</button>
+                        <button type="button" class="btn btn-success">Mentés</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- dal hozzaadasa modal-->
+<div class="modal fade" id="addSongModal" tabindex="-1" role="dialog" aria-labelledby="addSongModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="addSongModalLabel">Dal hozzáadása</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row margin-left-right">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Előadó">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Cím">
+                    </div>
+                </div>
+                <div class="row margin-left-right">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Műfaj">
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <input type="text" class="form-control" placeholder="Hossz">
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <input type="text" class="form-control" placeholder="Év">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
+                <button type="button" class="btn btn-success">Mentés</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- dal szerkesztese modal-->
+<div class="modal fade" id="editSongModal" tabindex="-1" role="dialog" aria-labelledby="editSongModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editSongModalLabel">Dal szerkesztése</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row margin-left-right">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <select class="form-control" id="performerSelect">
+                                <option>Előadó 1</option>
+                                <option>Előadó 2</option>
+                                <option>Előadó 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Cím 1">
+                    </div>
+                </div>
+                <div class="row margin-left-right">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Műfaj 1">
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <input type="text" class="form-control" placeholder="3:11">
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <input type="text" class="form-control" placeholder="2011">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
+                <button type="button" class="btn btn-danger">Törlés</button>
+                <button type="button" class="btn btn-success">Mentés</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>
