@@ -53,4 +53,8 @@ app.get('/performers', function(req, res) {
     res.sendFile(path.join(__dirname+'/views/performers.html'));
 });
 
+app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname+'/views/login.html'));
+});
+
 app.listen(3000);

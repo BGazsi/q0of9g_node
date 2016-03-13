@@ -3,6 +3,15 @@
     margin: 50px auto 0;
 }
 
+.main-wrapper--login {
+    max-width: 350px;
+}
+
+.main-wrapper--login input.form-control,
+.main-wrapper--login h1 {
+    margin-bottom: 30px;
+}
+
 .no-left-margin {
     margin-left: 0 !important;
 }
@@ -100,4 +109,11 @@ input.form-control {
 .btn-next {
     padding: 2px 8px;
     margin-top: -3px;
+}
+
+.login-sticky {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 999;
 }
