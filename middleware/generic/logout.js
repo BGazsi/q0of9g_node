@@ -1,0 +1,2 @@
+/*
+session destroy
