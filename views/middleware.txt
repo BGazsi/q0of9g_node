@@ -1,0 +1,47 @@
+auth - minden route elején bejelentkezést vizsgál, session függvényében a loginra, vagy a routera irányít át
+renderView - kapott nevû templatet renderel ki a kapott adatokkal
+
+Elõadók
+
+Megtekintés:
+auth (nem is feltétlenül szükséges, mert session nélkül is meg lehet tekinteni az adatokat)
+getAuthors
+renderView
+
+Hozzáadás / Szerkesztés:
+Hozzáadáasnál és szerkesztésnél ugyanazok a middlewarek lefuttatásával is el tudjuk érni a kívánt eredményt. Ha az adott ID-jú elem szerepel az adatbázisban,
+akkor szerkesztésrõl, ha nem szerepel, akkor hozzáadásról van szó.
+
+auth
+getAuthors
+addOrReplaceAuthor
+renderView
+
+Törlés
+auth
+getAuthors
+deleteAuthor
+renderView
+
+Dalok
+
+
+Megtekintés:
+auth (nem is feltétlenül szükséges, mert session nélkül is meg lehet tekinteni az adatokat)
+getSongs
+renderView
+
+Hozzáadás / Szerkesztés:
+Hozzáadáasnál és szerkesztésnél ugyanazok a middlewarek lefuttatásával is el tudjuk érni a kívánt eredményt. Ha az adott ID-jú elem szerepel az adatbázisban,
+akkor szerkesztésrõl, ha nem szerepel, akkor hozzáadásról van szó.
+
+auth
+getSongs
+addOrReplaceSong
+renderView
+
+Törlés
+auth
+getSongs
+deleteSong
+renderView
