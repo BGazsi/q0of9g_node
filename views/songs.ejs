@@ -6,7 +6,7 @@
     <div class="header-container text-center">
         <input id="main-search" class="form-control search-bar" placeholder="Írj be valamit a kereséshez!">
         <a href="/performers" class="btn btn-default header-btn pull-left no-left-margin">&laquo; Vissza</a>
-        <button type="button" data-toggle="modal" data-target="#addSongModal" class="btn btn-default header-btn pull-right">Dal hozzáadása</button>
+        <a href="/add-song" type="button" data-toggle="modal" data-target="#modal" class="btn btn-default header-btn pull-right">Dal hozzáadása</a>
         <a href="/" class="btn btn-default header-btn pull-right">Főoldal</a>
     </div>
 
@@ -23,7 +23,7 @@
 
             <tbody>
             <% songs.forEach(function(song) { %>
-            <tr class="clickable" data-toggle="modal" data-target="#editSongModal">
+            <tr href="/edit-song" class="clickable" data-toggle="modal" data-target="#modal">
                 <td><%= song.title %></td>
                 <td><%= song.length %></td>
                 <td><%= song.genre %></td>
@@ -36,8 +36,7 @@
     </div>
 </div>
 
-<%- include addSong.ejs %>
-<%- include editSong.ejs %>
+<%- include modalFrame.ejs %>
 
 <a href="/login" class="login-sticky btn btn-primary">Jelentkezz be!</a>
 

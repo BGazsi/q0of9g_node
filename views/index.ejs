@@ -3,7 +3,7 @@
     <div class="header-container">
         <input id="main-search" class="form-control search-bar" placeholder="Írj be valamit a kereséshez!">
         <a href="/performers" class="btn btn-default header-btn pull-right">Előadók megtekintése</a>
-        <button type="button" data-toggle="modal" data-target="#addSongModal" class="btn btn-default header-btn pull-right">Dal hozzáadása</button>
+        <a href="/add-song" type="button" data-toggle="modal" data-target="#modal" class="btn btn-default header-btn pull-right">Dal hozzáadása</a>
     </div>
 
     <div class="table-responsive">
@@ -21,8 +21,8 @@
             <tbody>
             <% songs.forEach(function(song) { %>
             <tr>
-                <td class="clickable" data-toggle="modal" data-target="#editPerformerModal"><%= song.performer %></td>
-                <td class="clickable" data-toggle="modal" data-target="#editSongModal"><%= song.title %></td>
+                <td class="clickable" href="/edit-author" data-toggle="modal" data-target="#modal"><%= song.performer %></td>
+                <td class="clickable" href="/edit-song" data-toggle="modal" data-target="#modal"><%= song.title %></td>
                 <td><%= song.length %></td>
                 <td><%= song.genre %></td>
                 <td><%= song.year %></td>
@@ -34,10 +34,7 @@
     </div>
 </div>
 
-<!-- modalok -->
-<%- include editAuthor.ejs %>
-<%- include addSong.ejs %>
-<%- include editSong.ejs %>
+<%- include modalFrame.ejs %>
 
 <a href="/login" class="login-sticky btn btn-primary">Jelentkezz be!</a>
 <%- include footer.ejs %>

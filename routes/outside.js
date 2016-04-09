@@ -25,6 +25,7 @@ exports = module.exports = function(app) {
 
 
     app.get('/login', function (req, res) {
+        //inverse auth
         res.render('login');
     });
 };
