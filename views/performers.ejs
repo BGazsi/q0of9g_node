@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Music</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
+<%- include header.ejs %>
 <div class="main-wrapper">
 
     <h1>Előadók</h1>
@@ -24,7 +6,7 @@
     <div class="header-container text-center">
         <input id="main-search" class="form-control search-bar" placeholder="Írj be valamit a kereséshez!">
         <a href="/" class="btn btn-default header-btn pull-left no-left-margin">&laquo; Vissza</a>
-        <a href="#" class="btn btn-default header-btn pull-right">Előadó hozzáadása</a>
+        <button type="button" data-toggle="modal" data-target="#addPerformerModal" class="btn btn-default header-btn pull-right">Előadó hozzáadása</button>
     </div>
 
     <div class="table-responsive performers-table">
@@ -40,8 +22,8 @@
             <tbody>
             <% songs.forEach(function(song) { %>
             <tr>
-                <td><%= song.performer %></td>
-                <td>2</td>
+                <td class="clickable" data-toggle="modal" data-target="#editPerformerModal"><%= song.performer %></td>
+                <td class="clickable" data-toggle="modal" data-target="#editPerformerModal">2</td>
                 <td><a href="/songs" class="btn btn-default btn-next">&raquo;</a></td>
             </tr>
             <% }); %>
@@ -50,6 +32,9 @@
         </table>
     </div>
 </div>
-</body>
 
-</html>
+<%- include addAuthor.ejs %>
+<%- include editAuthor.ejs %>
+
+<a href="/login" class="login-sticky btn btn-primary">Jelentkezz be!</a>
+<%- include footer.ejs %>
