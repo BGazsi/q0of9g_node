@@ -4,36 +4,37 @@
     <h4 class="modal-title" id="editSongModalLabel">Dal szerkesztése</h4>
 </div>
 <div class="modal-body">
-
-    <div class="row margin-left-right">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <select class="form-control" id="performerSelect">
-                    <option>Előadó 1</option>
-                    <option>Előadó 2</option>
-                    <option>Előadó 4</option>
-                </select>
+    <form action="song/4/edit" method="post">
+        <div class="row margin-left-right">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <select class="form-control" id="performerSelect">
+                        <option>Előadó 1</option>
+                        <option>Előadó 2</option>
+                        <option>Előadó 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Cím 1">
             </div>
         </div>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" placeholder="Cím 1">
+        <div class="row margin-left-right">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Műfaj 1">
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <input type="text" class="form-control" placeholder="3:11">
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <input type="text" class="form-control" placeholder="2011">
+            </div>
         </div>
     </div>
-    <div class="row margin-left-right">
-        <div class="col-sm-6">
-            <input type="text" class="form-control" placeholder="Műfaj 1">
-        </div>
-        <div class="col-sm-3 col-xs-6">
-            <input type="text" class="form-control" placeholder="3:11">
-        </div>
-        <div class="col-sm-3 col-xs-6">
-            <input type="text" class="form-control" placeholder="2011">
-        </div>
-    </div>
-</div>
 
-<div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
-    <button type="button" class="btn btn-danger">Törlés</button>
-    <button type="button" class="btn btn-success">Mentés</button>
-</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
+        <button type="button" class="btn btn-danger btn-delete-song">Törlés</button>
+        <button type="submit" class="btn btn-success">Mentés</button>
+    </div>
+</form>

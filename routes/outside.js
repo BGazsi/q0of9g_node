@@ -1,5 +1,7 @@
 exports = module.exports = function(app) {
 
+    var userModel = require('../models/users');
+
     app.get('/', function (req, res, next) {
 
         var performers = [
