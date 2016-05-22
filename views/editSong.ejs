@@ -3,38 +3,34 @@
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="editSongModalLabel">Dal szerkesztése</h4>
 </div>
-<div class="modal-body">
-    <form action="song/4/edit" method="post">
+<form action="song/<%=song._id%>/edit" method="post">
+    <div class="modal-body">
         <div class="row margin-left-right">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <select class="form-control" id="performerSelect">
-                        <option>Előadó 1</option>
-                        <option>Előadó 2</option>
-                        <option>Előadó 4</option>
-                    </select>
+                    <input type="text" class="form-control" name="newauthor" value="<%=song.author%>">
                 </div>
             </div>
             <div class="col-sm-6">
-                <input type="text" class="form-control" placeholder="Cím 1">
+                <input type="text" class="form-control" name="newtitle" value="<%=song.title%>">
             </div>
         </div>
         <div class="row margin-left-right">
             <div class="col-sm-6">
-                <input type="text" class="form-control" placeholder="Műfaj 1">
+                <input type="text" class="form-control" name="newgenre" value="<%=song.genre%>">
             </div>
             <div class="col-sm-3 col-xs-6">
-                <input type="text" class="form-control" placeholder="3:11">
+                <input type="text" class="form-control" name="newlength" value="<%=song.length%>">
             </div>
             <div class="col-sm-3 col-xs-6">
-                <input type="text" class="form-control" placeholder="2011">
+                <input type="number" class="form-control" name="newyear" value="<%=song.year%>">
             </div>
         </div>
     </div>
 
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
-        <button type="button" class="btn btn-danger btn-delete-song">Törlés</button>
-        <button type="submit" class="btn btn-success">Mentés</button>
+        <a href="/song/<%=song._id%>/delete" type="button" class="btn btn-danger btn-delete-song">Törlés</a>
+        <input type="submit" class="btn btn-success" value="Mentés" />
     </div>
 </form>

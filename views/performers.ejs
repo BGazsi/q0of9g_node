@@ -14,7 +14,6 @@
             <thead>
             <tr>
                 <th>Név</th>
-                <th>Dalok száma</th>
                 <th></th>
             </tr>
             </thead>
@@ -22,9 +21,8 @@
             <tbody>
             <% performers.forEach(function(performer) { %>
             <tr>
-                <td class="clickable" href="/edit-author" data-toggle="modal" data-target="#modal"><%= performer.name %></td>
-                <td class="clickable" href="/edit-author" data-toggle="modal" data-target="#modal"><%= performer.count %></td>
-                <td><a href="/songs" class="btn btn-default btn-next">&raquo;</a></td>
+                <td class="clickable" href="/edit-author/<%=performer.name.split(' ').join('%20')%>" data-toggle="modal" data-target="#modal"><%= performer.name %></td>
+                <td width="30px"><a href="/songs/<%=performer.name%>" class="btn btn-default btn-next">&raquo;</a></td>
             </tr>
             <% }); %>
             </tbody>

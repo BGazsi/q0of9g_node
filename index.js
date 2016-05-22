@@ -8,6 +8,13 @@ app.use(express.static(__dirname + '/public'));
 var session = require('express-session');
 var bodyParser = require('body-parser');
 
+// for parsing application/json
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.use(session({
     secret: 'keyboard cat',
     cookie: {
@@ -17,12 +24,13 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// for parsing application/json
-app.use(bodyParser.json());
-// for parsing application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+
+app.use(function (req, res, next) {
+    res.tpl = {};
+    res.tpl.error = [];
+
+    return next();
+});
 
 require('./routes/outside')(app);
 require('./routes/author')(app);

@@ -3,15 +3,15 @@
     <h4 class="modal-title" id="editPerformerModalLabel">Előadó szerkesztése</h4>
 </div>
 <div class="modal-body">
-    <form action="author/1/edit">
+    <form action="/author/<%=author.name%>/edit" method="post">
         <div class="row margin-left-right">
             <div class="col-sm-6">
-                <input type="text" class="form-control" placeholder="Előadó 1">
+                <input type="text" class="form-control" name="newauthor" value="<%=author.name%>">
             </div>
             <div class="col-sm-6 text-right">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
-                <button type="button" class="btn btn-danger btn-delete-author">Törlés</button>
-                <button type="submit" class="btn btn-success">Mentés</button>
+                <a href="/author/<%=author.name%>/delete" type="button" class="btn btn-danger btn-delete-author">Törlés</a>
+                <input type="submit" class="btn btn-success" value="Mentés" />
             </div>
         </div>
     </form>

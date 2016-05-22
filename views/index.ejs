@@ -5,7 +5,7 @@
         <a href="/performers" class="btn btn-default header-btn pull-right">Előadók megtekintése</a>
         <a href="/add-song" type="button" data-toggle="modal" data-target="#modal" class="btn btn-default header-btn pull-right">Dal hozzáadása</a>
     </div>
-
+    <%if(songs != false) {%>
     <div class="table-responsive">
         <table class="table table-hover table-striped">
             <thead>
@@ -19,20 +19,25 @@
             </thead>
 
             <tbody>
-            <% songs.forEach(function(song) { %>
+            <%songs.forEach(function(song) { %>
             <tr>
-                <td class="clickable" href="/edit-author" data-toggle="modal" data-target="#modal"><%= song.performer %></td>
-                <td class="clickable" href="/edit-song" data-toggle="modal" data-target="#modal"><%= song.title %></td>
+                <td class="clickable" href="/edit-author/<%=song.author.split(' ').join('%20')%>" data-toggle="modal" data-target="#modal"><%= song.author %></td>
+                <td class="clickable" href="/edit-song/<%=song._id%>" data-toggle="modal" data-target="#modal"><%= song.title %></td>
                 <td><%= song.length %></td>
                 <td><%= song.genre %></td>
                 <td><%= song.year %></td>
             </tr>
-            <% }); %>
+            <%});%>
             </tbody>
 
         </table>
     </div>
-</div>
+    <% } else {
+    %>
+    <br/>
+    <div class="alert alert-danger"> Nincs adat! </div>
+    <% } %>
+    </div>
 
 <%- include modalFrame.ejs %>
 

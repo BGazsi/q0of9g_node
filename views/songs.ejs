@@ -1,7 +1,8 @@
 <%- include header.ejs %>
+<%- include style.ejs %>
 <div class="main-wrapper">
 
-    <h1>Előadók</h1>
+    <h1><%=author.name%></h1>
 
     <div class="header-container text-center">
         <input id="main-search" class="form-control search-bar" placeholder="Írj be valamit a kereséshez!">
@@ -10,6 +11,7 @@
         <a href="/" class="btn btn-default header-btn pull-right">Főoldal</a>
     </div>
 
+    <%if(songs != false) {%>
     <div class="table-responsive performers-table">
         <table class="table table-hover table-striped">
             <thead>
@@ -23,7 +25,7 @@
 
             <tbody>
             <% songs.forEach(function(song) { %>
-            <tr href="/edit-song" class="clickable" data-toggle="modal" data-target="#modal">
+            <tr href="/edit-song/<%=song._id%>" class="clickable" data-toggle="modal" data-target="#modal">
                 <td><%= song.title %></td>
                 <td><%= song.length %></td>
                 <td><%= song.genre %></td>
@@ -34,10 +36,14 @@
 
         </table>
     </div>
+    <%} else {
+    %>
+    <br/>
+    <div class="alert alert-danger"> Nincs adat! </div>
+    <% } %>
 </div>
 
 <%- include modalFrame.ejs %>
 
 <a href="/login" class="login-sticky btn btn-primary">Jelentkezz be!</a>
-
-<%- include footer.ejs %>>
+<%- include footer.ejs %>

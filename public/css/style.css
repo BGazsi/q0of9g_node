@@ -80,6 +80,11 @@ input.form-control {
 .header-btn {
     margin-left: 25px;
 }
+
+.modal-content {
+    height: 360px;
+}
+
 @media (min-width: 768px) {
     .modal-body .row:not(:first-child) {
         margin-top: 30px;

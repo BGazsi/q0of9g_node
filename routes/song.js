@@ -1,57 +1,63 @@
+
+var getSongsMW = require('../middleware/song/getSong');
+var getOneSongMW = require('../middleware/song/getOneSong');
+var getSongListMW = require('../middleware/song/getSongList');
+var authMW = require('../middleware/generic/auth');
+var updateSongMW = require('../middleware/song/updateSong');
+var deleteSongMW = require('../middleware/song/deleteSong');
+var renderTemplateMW = require('../middleware/generic/renderTemplate');
+var getAuthorMW = require('../middleware/author/getAuthor');
+var editAuthorMW = require('../middleware/author/editAuthor');
+
+var authorModel = require('../models/authors');
+var songsModel = require('../models/songs');
+var userModel = require('../models/users');
+
 exports = module.exports = function(app) {
 
-    var getSongsMW = require('../middleware/song/getSong');
+    var objectRepository = {
+        'authorModel': authorModel,
+        'songsModel': songsModel,
+        'userModel': userModel
+    };
 
-    var authorModel = require('../models/authors');
-    var songsModel = require('../models/songs');
-    var userModel = require('../models/users');
+    app.use('/songs/:authorname',
+        getAuthorMW(objectRepository),
+        getSongsMW(objectRepository),
+        renderTemplateMW(objectRepository, 'songs')
+    );
+    app.use('/add-song',
+        authMW(objectRepository),
+        renderTemplateMW(objectRepository, 'addSong')
+    );
 
-    app.use('/songs', function (req, res) {
+    app.use('/song/add',
+        authMW(objectRepository),
+        updateSongMW(objectRepository),
+        renderTemplateMW(objectRepository, 'songs')
+    );
 
-        var objectRepository = {
-            authorModel: authorModel,
-            songsModel: songsModel,
-            userModel: userModel
-        };
-
-        /*var data = getSongsMW(objectRepository);
-        console.log(data);*/
-
-        var songs = [
-            {title: '45-ös blues', year: '1982', performer: 'Hobo Blues Band', length: '5:31', genre: 'blues'},
-            {title: 'Édes otthon', year: '1982', performer: 'Hobo Blues Band', length: '3:31', genre: 'blues'}
-        ];
-
-        var data = {songs: songs};
-        res.render('songs', data);
-    });
-    app.use('/add-song', function (req, res) {
-        res.render('addSong');
-    });
-
-    app.use('/song/:songid/add',
-        //adatbmiddlewares
-        function (req, res) {
-            return res.redirect('/songs');
-
-        });
-
-    app.use('/edit-song', function (req, res) {
-        //auth
-        res.render('editSong');
-    });
+    app.use('/edit-song/:songid',
+        authMW(objectRepository),
+        getOneSongMW(objectRepository),
+        renderTemplateMW(objectRepository, 'editSong')
+    );
 
     app.use('/song/:songid/edit',
-        //adatbmiddlewares
+        authMW(objectRepository),
+        getOneSongMW(objectRepository),
+        updateSongMW(objectRepository),
         function (req, res) {
             return res.redirect('/songs');
-
         });
 
     app.use('/song/:songid/delete',
-        //auth
-        //adatbmiddlewares
+        authMW(objectRepository),
+        getOneSongMW(objectRepository),
+        deleteSongMW(objectRepository),
+        getSongListMW(objectRepository),
         function (req, res) {
-            return res.redirect('/songs');
-        });
+            return res.redirect('/');
+        }
+    );
 };
