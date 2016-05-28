@@ -27,6 +27,10 @@ describe('auth middleware ', function () {
             var res = {
                 tpl: {
                     error: []
+                },
+                redirect: function(asd) {
+                    console.log('redirect to ' + asd);
+                    done();
                 }
             };
             authMW({
